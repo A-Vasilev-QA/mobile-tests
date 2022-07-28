@@ -1,4 +1,4 @@
-package helpers;
+package qa.avasilev.tests.helpers;
 
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;

@@ -1,4 +1,4 @@
-package helpers;
+package qa.avasilev.tests.helpers;
 
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
