@@ -1,4 +1,4 @@
-package qa.avasilev.tests.helpers;
+package qa.avasilev.helpers;
 
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -26,9 +26,9 @@ public class Attach {
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
-    public static String video(String sessionId) {
+    public static String video(String sessionId, String username, String password) {
         return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-                + Browserstack.videoUrl(sessionId)
+                + Browserstack.videoUrl(sessionId, username, password)
                 + "' type='video/mp4'></video></body></html>";
     }
 

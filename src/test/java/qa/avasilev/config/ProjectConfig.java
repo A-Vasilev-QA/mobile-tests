@@ -10,16 +10,12 @@ import org.aeonbits.owner.Config;
 })
 public interface ProjectConfig extends Config {
 
-    @DefaultValue("chrome")
-    String browser();
-    @DefaultValue("100.0")
-    String browserVersion();
-    @DefaultValue("1920x1080")
-    String browserSize();
-    String browserMobileView();
-    String remoteDriverUrl();
-    String videoStorage();
-    String webUrl();
+    @DefaultValue("Google Pixel 3")
+    String device();
+    @DefaultValue("9.0")
+    String osVersion();
+    @DefaultValue("browserstack-build")
+    String build();
     String login();
     String password();
 

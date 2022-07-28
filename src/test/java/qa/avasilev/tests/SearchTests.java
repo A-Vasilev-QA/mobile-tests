@@ -1,4 +1,4 @@
-package tests;
+package qa.avasilev.tests;
 
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
