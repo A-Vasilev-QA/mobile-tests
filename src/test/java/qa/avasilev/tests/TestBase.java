@@ -36,6 +36,6 @@ public class TestBase {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         step("Close driver", Selenide::closeWebDriver);
-        Attach.video(sessionId, Project.config.login(), Project.config.password());
+        Attach.video(sessionId);
     }
 }

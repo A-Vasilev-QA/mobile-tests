@@ -1,15 +1,17 @@
 package qa.avasilev.helpers;
 
+import qa.avasilev.config.Project;
+
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
 
 public class Browserstack {
 
-    public static String videoUrl(String sessionId, String username, String password) {
+    public static String videoUrl(String sessionId) {
         String url = format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
 
         return given()
-                .auth().basic("alekseivasilev_aBgVF4", "WFYqW4fLnoT7sArFxpSu")
+                .auth().basic(Project.config.login(), Project.config.password())
                 .log().all()
                 .when()
                 .get(url)

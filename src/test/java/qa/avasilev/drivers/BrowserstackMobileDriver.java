@@ -17,8 +17,8 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         MutableCapabilities mutableCapabilities = new MutableCapabilities();
         mutableCapabilities.merge(capabilities);
         // Set your access credentials
-        mutableCapabilities.setCapability("browserstack.user", "alekseivasilev_aBgVF4");
-        mutableCapabilities.setCapability("browserstack.key", "WFYqW4fLnoT7sArFxpSu");
+        mutableCapabilities.setCapability("browserstack.user", Project.config.login());
+        mutableCapabilities.setCapability("browserstack.key", Project.config.password());
 
         // Set URL of the application under test
         //mutableCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
