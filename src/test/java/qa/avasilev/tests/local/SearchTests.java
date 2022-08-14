@@ -1,4 +1,4 @@
-package qa.avasilev.tests;
+package qa.avasilev.tests.local;
 
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -44,7 +45,7 @@ public class SearchTests extends TestBase {
         });
 
         step("Verify the article header", () -> {
-            $(AppiumBy.className("android.widget.TextView"), 0).shouldHave(text("Selenium (software)"));
+            $(AppiumBy.className("android.view.View"), 0).shouldHave(text("Selenium (software)"));
         });
     }
 }

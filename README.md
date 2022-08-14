@@ -14,7 +14,7 @@
 
 Run tests with filled remote.properties:
 ```bash
-gradle clean :test --tests "qa.avasilev.tests.SearchTests"
+gradle clean :test --tests "qa.avasilev.tests.browserstack.SearchTests"
 ```
 
 Serve report:

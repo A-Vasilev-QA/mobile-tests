@@ -1,4 +1,4 @@
-package qa.avasilev.tests;
+package qa.avasilev.tests.local;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import qa.avasilev.drivers.BrowserstackMobileDriver;
+import qa.avasilev.drivers.LocalMobileDriver;
 import qa.avasilev.helpers.Attach;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -19,7 +20,7 @@ public class TestBase {
 
     @BeforeAll
     public static void setUp() {
-        Configuration.browser = BrowserstackMobileDriver.class.getName();
+        Configuration.browser = LocalMobileDriver.class.getName();
         Configuration.browserSize = null;
     }
 
@@ -31,10 +32,8 @@ public class TestBase {
 
     @AfterEach
     public void tearDown() {
-        String sessionId = sessionId();
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         step("Close driver", Selenide::closeWebDriver);
-        Attach.video(sessionId);
     }
 }

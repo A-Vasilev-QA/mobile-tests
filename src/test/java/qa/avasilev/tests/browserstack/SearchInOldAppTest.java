@@ -1,4 +1,4 @@
-package qa.avasilev.tests;
+package qa.avasilev.tests.browserstack;
 
 import io.appium.java_client.AppiumBy;
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class SearchInOldAppTest extends TestBase {
 
+// Commented code: same actions without Selenide
 
     @Test
     void searchTest() {

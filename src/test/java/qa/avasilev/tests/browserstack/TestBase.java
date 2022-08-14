@@ -1,4 +1,4 @@
-package qa.avasilev.tests;
+package qa.avasilev.tests.browserstack;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;

@@ -10,9 +10,9 @@ import org.aeonbits.owner.Config;
 })
 public interface ProjectConfig extends Config {
 
-    @DefaultValue("Google Pixel 3")
+    @DefaultValue("Google Pixel 4")
     String device();
-    @DefaultValue("9.0")
+    @DefaultValue("10.0")
     String osVersion();
     @DefaultValue("browserstack-build")
     String build();
