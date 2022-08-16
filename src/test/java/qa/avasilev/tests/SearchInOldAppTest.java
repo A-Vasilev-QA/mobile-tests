@@ -1,7 +1,8 @@
-package qa.avasilev.tests.browserstack;
+package qa.avasilev.tests;
 
 import io.appium.java_client.AppiumBy;
 import org.junit.jupiter.api.Test;
+import qa.avasilev.tests.browserstack.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Selenide.$;

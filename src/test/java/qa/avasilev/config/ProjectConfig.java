@@ -10,12 +10,16 @@ import org.aeonbits.owner.Config;
 })
 public interface ProjectConfig extends Config {
 
+    @DefaultValue ("emulation")
+    String deviceHost();
     @DefaultValue("Google Pixel 4")
     String device();
     @DefaultValue("10.0")
     String osVersion();
     @DefaultValue("browserstack-build")
     String build();
+    String remoteDriverUrl();
+    String videoStorage();
     String login();
     String password();
 

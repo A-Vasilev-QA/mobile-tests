@@ -1,13 +1,13 @@
-package qa.avasilev.tests.local;
+package qa.avasilev.tests;
 
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import qa.avasilev.tests.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -21,7 +21,7 @@ public class SearchTests extends TestBase {
 
         step("Type query", () -> {
                     $(AppiumBy.id("org.wikipedia.alpha:id/search_container")).click();
-                    $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("BrowserStack");
+                    $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Appium");
                 });
 
         step("Verify that there are more than 0 results", () -> {
@@ -44,8 +44,8 @@ public class SearchTests extends TestBase {
                     .findBy(text("Testing framework for web applications")).click();
         });
 
-        step("Verify the article header", () -> {
-            $(AppiumBy.className("android.view.View"), 0).shouldHave(text("Selenium (software)"));
+        step("Verify the article header description", () -> {
+            $(AppiumBy.id("pcs")).shouldHave(text("org.wikipedia.alpha:id/page_contents_container"));
         });
     }
 }
