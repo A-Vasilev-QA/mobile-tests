@@ -27,15 +27,16 @@ public class TestBase {
     static void beforeAll() {
         Configuration.browserSize = null;
         switch (Project.config.deviceHost()) {
-            case "emulate", "real" ->
+            case "emulate", "real":
                     Configuration.browser = LocalMobileDriver.class.getName();
-            /*case "selenoid" -> {
+                    break;
+            /*case "selenoid":
                 videoEnabled = true;
-            }*/
-            default -> {
+                break;*/
+            default:
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
                 videoEnabled = true;
-            }
+                break;
         }
     }
 
