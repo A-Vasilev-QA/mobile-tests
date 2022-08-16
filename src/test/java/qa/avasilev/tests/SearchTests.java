@@ -4,10 +4,10 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import qa.avasilev.tests.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -30,8 +30,8 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @DisplayName("User is able to reach the article clicking on search results")
-    void resultsClickTest() {
+    @DisplayName("Page theme selection available")
+    void themeIsChangeable() {
         back();
 
         step("Type query", () -> {
@@ -43,9 +43,9 @@ public class SearchTests extends TestBase {
             $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_description"))
                     .findBy(text("Testing framework for web applications")).click();
         });
-
         step("Verify the article header description", () -> {
-            $(AppiumBy.id("pcs")).shouldHave(text("org.wikipedia.alpha:id/page_contents_container"));
+            $(AppiumBy.id("org.wikipedia.alpha:id/page_theme")).click();
+            $(AppiumBy.id("org.wikipedia.alpha:id/button_font_family_sans_serif")).shouldBe(visible);
         });
     }
 }
