@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class SearchTests extends TestBase {
+public class MobileTests extends TestBase {
 
     @Test
     @Description("Test from the lesson")
@@ -47,5 +47,39 @@ public class SearchTests extends TestBase {
             $(AppiumBy.id("org.wikipedia.alpha:id/page_theme")).click();
             $(AppiumBy.id("org.wikipedia.alpha:id/button_font_family_sans_serif")).shouldBe(visible);
         });
+    }
+
+    @Test
+    @DisplayName("Onboarding screens are correct and can be switched")
+    void onboardingScreensAreCorrect() {
+        step("Verify the first screen", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("The Free Encyclopedia\n" +
+                    "…in over 300 languages"));
+        });
+        step("Click 'Continue'", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button"))
+                    .shouldHave(text("CONTINUE")).click();
+        });
+        step("Verify the second screen", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("New ways to explore"));
+        });
+        step("Click 'Continue'", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button"))
+                    .shouldHave(text("CONTINUE")).click();
+        });
+        step("Verify the third screen", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Reading lists with sync"));
+        });
+        step("Click 'Continue'", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button"))
+                    .shouldHave(text("CONTINUE")).click();
+        });
+        step("Verify the fourth screen", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Send anonymous data"));
+            $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_done_button"))
+                    .shouldHave(text("GET STARTED"));
+        });
+
+
     }
 }

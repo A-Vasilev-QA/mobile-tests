@@ -6,6 +6,7 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.remote.AutomationName;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
+import qa.avasilev.config.Project;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,9 +33,8 @@ public class LocalMobileDriver implements WebDriverProvider {
         options.merge(capabilities);
         options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
         options.setPlatformName("Android");
-        //options.setDeviceName("RFCR90ZMNQP");
-        options.setDeviceName("Pixel 4 API 29");
-        options.setPlatformVersion("10.0");
+        options.setDeviceName(Project.config.device());
+        options.setPlatformVersion(Project.config.osVersion());
         options.setApp(app.getAbsolutePath());
         options.setAppPackage("org.wikipedia.alpha");
         options.setAppActivity("org.wikipedia.main.MainActivity");

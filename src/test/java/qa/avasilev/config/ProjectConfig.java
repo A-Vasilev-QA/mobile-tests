@@ -18,8 +18,6 @@ public interface ProjectConfig extends Config {
     String osVersion();
     @DefaultValue("browserstack-build")
     String build();
-    String remoteDriverUrl();
-    String videoStorage();
     String login();
     String password();
 

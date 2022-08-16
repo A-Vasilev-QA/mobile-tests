@@ -6,21 +6,37 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import qa.avasilev.config.Project;
+import qa.avasilev.drivers.BrowserstackMobileDriver;
+import qa.avasilev.drivers.LocalMobileDriver;
 import qa.avasilev.helpers.Attach;
-import qa.avasilev.helpers.DriverSettings;
+
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static io.qameta.allure.Allure.step;
 import static qa.avasilev.helpers.Attach.sessionId;
-import static qa.avasilev.helpers.DriverSettings.videoEnabled;
+
 
 
 public class TestBase {
 
+    private static boolean videoEnabled;
+
     @BeforeAll
     static void beforeAll() {
-        DriverSettings.configure();
+        Configuration.browserSize = null;
+        switch (Project.config.deviceHost()) {
+            case "emulate", "real" ->
+                    Configuration.browser = LocalMobileDriver.class.getName();
+            /*case "selenoid" -> {
+                videoEnabled = true;
+            }*/
+            default -> {
+                Configuration.browser = BrowserstackMobileDriver.class.getName();
+                videoEnabled = true;
+            }
+        }
     }
 
     @BeforeEach
