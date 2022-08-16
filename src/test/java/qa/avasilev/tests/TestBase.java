@@ -8,7 +8,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import qa.avasilev.config.Project;
 import qa.avasilev.drivers.BrowserstackMobileDriver;
+import qa.avasilev.drivers.LocalMobileDriver;
 import qa.avasilev.helpers.Attach;
+
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
@@ -16,12 +18,25 @@ import static io.qameta.allure.Allure.step;
 import static qa.avasilev.helpers.Attach.sessionId;
 
 
+
 public class TestBase {
 
+    private static boolean videoEnabled;
+
     @BeforeAll
-    public static void setUp() {
-        Configuration.browser = BrowserstackMobileDriver.class.getName();
+    static void beforeAll() {
         Configuration.browserSize = null;
+        switch (Project.config.deviceHost()) {
+            case "emulate", "real" ->
+                    Configuration.browser = LocalMobileDriver.class.getName();
+            /*case "selenoid" -> {
+                videoEnabled = true;
+            }*/
+            default -> {
+                Configuration.browser = BrowserstackMobileDriver.class.getName();
+                videoEnabled = true;
+            }
+        }
     }
 
     @BeforeEach
@@ -36,6 +51,8 @@ public class TestBase {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         step("Close driver", Selenide::closeWebDriver);
-        Attach.video(sessionId);
+        if (videoEnabled) {
+            Attach.video(sessionId);
+        }
     }
 }

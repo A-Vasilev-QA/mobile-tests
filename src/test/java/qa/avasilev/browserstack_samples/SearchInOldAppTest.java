@@ -1,7 +1,8 @@
-package qa.avasilev.tests;
+package qa.avasilev.browserstack_samples;
 
 import io.appium.java_client.AppiumBy;
 import org.junit.jupiter.api.Test;
+import qa.avasilev.tests.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Selenide.$;
@@ -9,6 +10,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class SearchInOldAppTest extends TestBase {
 
+// Commented code: same actions without Selenide
 
     @Test
     void searchTest() {
