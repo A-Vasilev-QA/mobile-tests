@@ -1,4 +1,4 @@
-# mobile-tests-12
+# Tests for Wikipedia alpha
 
 # Jenkins job
 <a target="_blank" href="https://jenkins.autotests.cloud/job/C12-AVasilevQA-Mobile-Tests-12/">https://jenkins.autotests.cloud/job/C12-AVasilevQA-Mobile-Tests-12/</a>
